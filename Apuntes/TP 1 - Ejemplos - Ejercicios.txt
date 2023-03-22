@@ -1,0 +1,84 @@
+TP 1 - RECORDAR SUBIR PRACTICO - ENVIAR EL ARCHIVO COMO UN DOCUMENTO Y TAMBIEN ADJUNTAR LINK DE GITHUB
+
+
+Se trata de mostrar los números desde el 1 hasta el 100 utilizando las instrucciones repetitivas while, do while y for.
+
+--------------------------------------------------------------------------------------------------------------
+
+1. Ejemplo de uso de WHILE: Programa Java que muestre los números del 1 al 100 utilizando la instrucción while.
+/*
+ * Ejercicios básicos java con estructura iterativa o repetitiva                                                  
+ * Mostrar los números del 1 al 100
+ * utilizando un bucle while
+ */
+public class While {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.out.println("Numeros del 1 al 100: (Usando While)");   // imprimo por pantalla el msj                                                         
+        int i=1;
+        while(i<=100) {								// la condición booleana se evalúa antes de que se ejecute el código
+                  System.out.println(i);            // se ejecuta el proceso                                                       
+                  i++;}								// incremento y regreso al bucle
+	}
+
+}   // en el While, sino se cumple la condicion Booleana, no se ejecuta
+
+
+
+--------------------------------------------------------------------------------------------------------------
+
+2. Ejemplo de uso de do-while. Programa Java que muestre los números del 1 al 100 utilizando la instrucción do..while.
+/*
+ * Ejercicios básicos java con estructura iterativa o repetitiva                                                  
+ * Mostrar los números del 1 al 100 utilizando un bucle do while
+ */
+public class DoWhile {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		 int i = 1;
+	        System.out.println("Numeros del 1 al 100: (Usando Do While) ");                                                             
+	        do{
+	                   System.out.println(i);
+	                   i++;
+	        }while(i<=100); // sea cual fuere la condicion, siempre se ejecutara al menos UNA vez
+	}
+
+}
+
+---------------------------------------------------------------------------------------------------------------
+
+/*
+ * Ejercicios básicos java con estructura iterativa o repetitiva                                                  
+ * Mostrar los números del 1 al 100 utilizando un bucle for
+ */
+public class For {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+        System.out.println("Numeros del 1 al 100 (usando FOR): ");  
+        int i;
+        for(i=1;i<=100;i++)
+            System.out.println(i);
+
+	}
+
+}
+---------------------------------------------------------------------------------------------------------------
+ * Ejercicios básicos java con estructura iterativa o repetitiva                                                  
+ * Mostrar los números del 1 al 100 utilizando un bucle for (x2) que muestre el resultado multiplicado por 2
+
+public class For {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+        System.out.println("Numeros del 1 al 100 (usando FOR): ");  
+        int i;
+        for(i=1;i<=100;i++)
+            System.out.println(i*2);
+
+	}
+
+}
+
