@@ -17,6 +17,7 @@ public class CuadradoNumero {
                 num = entrada.nextInt();
                 int cuadrado = num * num;
                 System.out.println("El resultado es: " + cuadrado);
+
             } catch (InputMismatchException ex) {
                 System.out.println("Debe ingresar un valor entero... PORFAVOR");
                 entrada.next();

@@ -1,4 +1,5 @@
 package TP5;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 class Producto {
@@ -40,14 +41,32 @@ class Descuento extends itemCarrito {
 
 public class Carrito {
     public static void main(String[] args) {
-
         Scanner teclado = new Scanner(System.in);
-        System.out.println("Ingrese producto, cantidad y precio por unidad");
+        //System.out.println("Ingrese producto, cantidad y precio por unidad");
+        String produ;
+        boolean continua;
+
+        do {
+            try {
+                continua = false;
+                System.out.println("Ingrese un producto: ");
+                produ = teclado.next();
+                System.out.println("El producto es: " + produ);
+
+            } catch (InputMismatchException ex) {
+                System.out.println("Debe ingresar el nombre del producto por favor");
+                teclado.next();
+                continua = true;
+            }
+
+        } while (continua);
+
         Producto compra = new Producto(
                 teclado.next(),
                 teclado.nextInt(),
                 teclado.nextInt()
         );
+
         itemCarrito itemc1 = new itemCarrito(
                 compra.nombreP,
                 compra.cantidad,
