@@ -31,6 +31,15 @@ public class Consultorio {
                 case 3:
                     m.eliminarRegistoEmpleados();
                     break;
+                case 4:
+                    m.agregarTablaMedicos();
+                    break;
+                case 5:
+                    m.eliminarRegistroMedico();
+                    break;
+                case 6:
+                    m.mostrarTablaMedicos();
+                    break;
                 case 0:
                     System.out.println("Vuelva pronto");
                     m.desconectar();
@@ -52,6 +61,9 @@ public class Consultorio {
         System.out.println("--------------------------------");
         System.out.println("Conexión de bbdd MySQL");
         System.out.println("--------------------------------");
+        System.out.println("6.MOSTRAR EL CONTENIDO DE LA TABLA MEDICOS");
+        System.out.println("5.ELIMINAR UN REGISTRO DE LA TABLA MEDICOS");
+        System.out.println("4.INSERTAR UN REGISTRO EN LA TABLA MEDICOS");
         System.out.println("3.ELIMINAR UN REGISTRO EN LA TABLA PACIENTES");
         System.out.println("2.INSERTAR UN REGISTRO EN LA TABLA PACIENTES");
         System.out.println("1.MOSTRAR EL CONTENIDO DE LA TABLA PACIENTES");
@@ -181,5 +193,75 @@ public class Consultorio {
             System.out.println("Error en el borrado del registro!!");
         }
     }
+    private void agregarTablaMedicos() {
+        String usuario="root";
+        String password="Jamaika#13";
+        Scanner sc = new Scanner(System.in);
 
+        System.out.println("Escriba la matricula del Medico: ");
+        int MedMatricula  = sc.nextInt(); //asigna la entrada de usuario a la DNI
+
+        System.out.println("Ingrese el nombre del Medico:  ");
+        String MedNombre = sc.next();
+
+        System.out.println("Ingrese la especialidad del Medico:  ");
+        String MedEspecialidad = sc.next();
+
+        String sql = "insert into medico (MedMatricula,MedNombre,MedEspecialidad) values ('"+MedMatricula+"','"+MedNombre+"','"+MedEspecialidad+"')";
+        Connection con=null;
+        try{
+
+            con=DriverManager.getConnection("jdbc:mysql://localhost:3306/consultorio", usuario, password);
+            Statement sentencia = con.createStatement();
+
+            int m = sentencia.executeUpdate(sql);
+            if (m == 1)
+                System.out.println("Se realizo correctamente la insercion : "+sql);
+            else
+                System.out.println("fallo la insercion");
+            con.close();
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+    private void eliminarRegistroMedico() {
+        String usuario="root";
+        String password="Jamaika#13";
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Escriba la matricula del medico a eliminar:...");
+        int MedMatricula  = sc.nextInt();
+
+        String sql ="DELETE FROM medico WHERE MedMatricula = '"+MedMatricula+"'";
+        Connection con=null;
+
+        try {
+            //Class.forName("com.mysql.jdbc.Driver");
+            con=DriverManager.getConnection("jdbc:mysql://localhost:3306/consultorio", usuario, password);
+            Statement sentencia = conexion.createStatement();
+            sentencia.execute(sql);
+            System.out.println("El registro se elimino!!");
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Error en el borrado del registro!!");
+        }
+    }
+
+    private void mostrarTablaMedicos() {
+
+        ResultSet r = buscar("select MedMatricula,MedNombre ,MedEspecialidad from medico");
+        try {
+            System.out.println("REGISTROS DE LA TABLA MEDICOS");
+
+            while (r.next()) {
+
+                System.out.println(r.getInt("MedMatricula") + " | " + r.getString("MedNombre") + " | " + r.getString("MedEspecialidad"));
+            }
+        } catch (SQLException ex) {
+            //     Logger.getLogger(PruebaC.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
 }
